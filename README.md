@@ -1,2 +1,2 @@
 # npng
-For Polygon DevX
+For Polygon DevX Hackathon
