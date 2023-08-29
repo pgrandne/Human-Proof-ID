@@ -1,6 +1,7 @@
 import { Account } from '../components/Account'
 import { Balance } from '../components/Balance'
 import { BlockNumber } from '../components/BlockNumber'
+import { Card } from '../components/Card'
 import { ConnectKitButton } from '../components/ConnectKitButton'
 import { Connected } from '../components/Connected'
 import { NetworkSwitcher } from '../components/NetworkSwitcher'
@@ -25,7 +26,7 @@ export function Page() {
 
   return (
     <>
-      <h1 className="text-5xl flex mt-3 justify-center">Template</h1>
+      <h1 className="h-1/6 text-5xl flex justify-center items-center">Template</h1>
       <div className="absolute top-1 md:top-2 right-1 md:right-2">
         <ConnectKitButton />
       </div>
@@ -33,6 +34,9 @@ export function Page() {
         <Account />
 
       </Connected>
+      <div className="h-4/6 flex justify-center">
+        <Card />
+      </div>
       <ToastContainer position="bottom-right" />
     </>
   )

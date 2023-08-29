@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.font-style {
+  font-family: "SF Pro Rounded", ui-rounded, "Nunito", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial,
+    sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.card {
+  background: #fff9e3;
+  height: 369px;
+  width: 360px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 2px #000000, -10px 10px 0 0 #000000;
+}

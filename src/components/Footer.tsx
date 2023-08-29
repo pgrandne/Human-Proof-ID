@@ -3,7 +3,7 @@ import { github } from '../public'
 
 export function Footer() {
     return (
-        <footer className="absolute bottom-2 w-full flex justify-center">
+        <footer className="h-1/6 w-screen flex justify-center items-center">
             <a
                 href="https://github.com/pgrandne"
                 target="_blank"
