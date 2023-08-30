@@ -8,10 +8,37 @@
     sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
+.title {
+  color: #6366f1;
+}
+
 .card {
   background: #fff9e3;
   height: 369px;
   width: 360px;
   border-radius: 8px;
-  box-shadow: inset 0 0 0 2px #000000, -10px 10px 0 0 #000000;
+  box-shadow: inset 0 0 0 2px #9083e5, -10px 10px 0 0 #9083e5;
+}
+
+.button {
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  width: 100%;
+  height: 64px;
+  font-size: 17px;
+  line-height: 20px;
+  transition: 180ms ease;
+  transition-property: background, color, box-shadow, transform, opacity;
+  background: white;
+  box-shadow: inset 0 0 0 2px #9083e5, -4px 4px 0 0 #9083e5;
+  border-radius: 8px;
+}
+
+.button:hover {
+  background: #fff9e3;
+  box-shadow: inset 0 0 0 2px #9083e5, -0px 0px 0 0 #9083e5;
 }

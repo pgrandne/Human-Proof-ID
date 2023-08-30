@@ -1,4 +1,6 @@
 import { Account } from '../components/Account'
+import Image from 'next/image'
+import { radish } from '../public'
 import { Balance } from '../components/Balance'
 import { BlockNumber } from '../components/BlockNumber'
 import { Card } from '../components/Card'
@@ -26,13 +28,17 @@ export function Page() {
 
   return (
     <>
-      <h1 className="h-1/6 text-5xl flex justify-center items-center">Template</h1>
-      <div className="absolute top-1 md:top-2 right-1 md:right-2">
+      <div className="h-1/6 flex justify-between p-3">
+        <Image
+          className="h-20 w-20 object-contain"
+          src={radish}
+          alt="radish"
+        />
+        <h1 className="text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-red-400 to-indigo-400">Template</h1>
         <ConnectKitButton />
       </div>
       <Connected>
         <Account />
-
       </Connected>
       <div className="h-4/6 flex justify-center">
         <Card />
