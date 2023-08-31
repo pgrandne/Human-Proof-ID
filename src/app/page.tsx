@@ -18,11 +18,11 @@ export default function Home() {
         <h1 className="text-5xl font-extrabold text-center mt-8 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-red-400 to-indigo-400">Human Proof ID</h1>
         <ConnectKitButton />
       </div>
-      {/* <div className="h-4/6 flex justify-center">
+      <div className="h-4/6 flex justify-center">
         <Connected>
-          <Card />
+          {/* <Card /> */}
         </Connected>
-      </div>*/}
+      </div>
       <ToastContainer position="bottom-right" />
     </>
   )
