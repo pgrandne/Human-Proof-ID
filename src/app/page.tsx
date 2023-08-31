@@ -20,7 +20,7 @@ export default function Home() {
       </div>
       <div className="h-4/6 flex justify-center">
         <Connected>
-          {/* <Card /> */}
+          <Card />
         </Connected>
       </div>
       <ToastContainer position="bottom-right" />
