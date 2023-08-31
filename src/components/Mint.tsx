@@ -3,24 +3,45 @@
 import Image from 'next/image'
 import { idcard } from '../public'
 import { useState } from 'react'
-import { useContractWrite, useWaitForTransaction } from 'wagmi'
-import { wagmiContractConfig } from './contracts'
+import { useSignMessage, usePrepareContractWrite, useContractWrite, useWaitForTransaction } from 'wagmi'
 import { MintModal } from './MintModal'
 import { toast } from 'react-toastify';
 
-export const Mint = ({ mint }: { mint: boolean }) => {
+export const Mint = ({ mint, score }: { mint: boolean, score: string }) => {
     const [disabled, setDisabled] = useState(false)
     const [modal, setModal] = useState(false)
     const notify = () => toast("🦄 Minting request submitted!");
 
-    const { write, data, error, isLoading, isError } = useContractWrite({
-        ...wagmiContractConfig,
-        functionName: 'mint',
+    const abit = [
+        {
+            "inputs": [],
+            "name": "safeMint",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+    ]
+
+    const { config, error } = usePrepareContractWrite({
+        address: '0xD349790Efaf56B1fB52421f14c48AD0198E235a8',
+        abi: abit,
+        functionName: 'safeMint',
     })
-    const waitForTransaction = useWaitForTransaction({
-        hash: data?.hash,
+
+    // const { write, data } = useContractWrite(config)
+
+    // const waitForTransaction = useWaitForTransaction({
+    //     hash: data?.hash,
+    //     onSuccess(data) {
+    //         setModal(true)
+    //     },
+    // })
+
+    const { data, isError, isLoading, isSuccess, signMessage } = useSignMessage({
+        message: `Request a Proof of Humanity NFT with score: ${score}`,
         onSuccess(data) {
-            setModal(true)
+            notify()
+            setTimeout(() => { setModal(true) }, 8300)
         },
     })
 
@@ -30,10 +51,8 @@ export const Mint = ({ mint }: { mint: boolean }) => {
                 disabled={!mint}
                 className="button flex justify-between"
                 onClick={() => {
-                    setDisabled(true)
-                    // write()
-                    notify()
-                    setModal(true)
+                    // setDisabled(true)
+                    signMessage()
                 }}>
                 {disabled &&
                     <svg

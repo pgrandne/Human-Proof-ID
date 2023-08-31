@@ -1,4 +1,4 @@
-import { github } from "../public";
+import { nft } from "../public";
 import Image from "next/image";
 import { Dispatch, SetStateAction } from "react";
 
@@ -21,14 +21,14 @@ export const MintModal = ({
                         <h2 className="text-xl font-bold py-4 ">
                             Congratulations. You have minted!{" "}
                         </h2>
-                        <Image src={github} className="img-shield rotate" alt="logo" />
+                        <Image src={nft} className="img-nft rotate" alt="logo" />
                         <p className="text-sm text-gray-500 px-8"></p>
                     </div>
-                    <div className="text-center">Congratulations, you are a human!
-                        <div>
-                            <a href={`https://sepolia.etherscan.io/tx/${tx}`} className="underline">Etherscan</a>
-                        </div>
-                    </div>
+                    <p className="text-center">Congratulations, you are a human!</p>
+                    <p className="text-center">Check your transaction on {' '}
+                        <a href={`https://mumbai.polygonscan.com/tx/${tx}`} className="underline">polygonscan</a>
+                    </p>
+
                     <div className="p-3 mt-2 text-center flex justify-center">
                         <button className="button button-modal"
                             onClick={() => setModal(false)}
