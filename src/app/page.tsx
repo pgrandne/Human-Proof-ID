@@ -3,12 +3,10 @@ import { idcard } from '../public'
 import { Card } from '../components/Card'
 import { ConnectKitButton } from '../components/ConnectKitButton'
 import { Connected } from '../components/Connected'
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export function Page() {
-  const notify = () => toast("🦄 Wow so easy !");
-
+export function Home() {
   return (
     <>
       <div className="h-1/6 flex justify-between p-3">
@@ -30,4 +28,4 @@ export function Page() {
   )
 }
 
-export default Page
+export default Home
