@@ -22,8 +22,8 @@ export default function Home() {
         <Connected>
           <Card />
         </Connected>
-      </div>
-      <ToastContainer position="bottom-right" /> */}
+      </div>*/}
+      <ToastContainer position="bottom-right" />
     </>
   )
 }

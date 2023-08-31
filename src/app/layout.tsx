@@ -3,7 +3,7 @@ import "./globals.css";
 import { Providers } from './providers'
 
 export const metadata = {
-  title: 'Hackathon Template',
+  title: 'Human Proof ID',
 }
 
 export default function RootLayout({
