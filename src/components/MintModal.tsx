@@ -2,7 +2,7 @@ import { github } from "../public";
 import Image from "next/image";
 import { Dispatch, SetStateAction } from "react";
 
-export const Modal = ({
+export const MintModal = ({
     setModal,
     tx
 }: {
