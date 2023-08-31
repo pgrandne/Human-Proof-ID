@@ -18,6 +18,19 @@
   width: 360px;
   border-radius: 8px;
   box-shadow: inset 0 0 0 2px #9083e5, -10px 10px 0 0 #9083e5;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-left: 1.5rem /* 24px */;
+  padding-right: 1.5rem /* 24px */;
+}
+
+.modal {
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 2px #9083e5, -10px 10px 0 0 #9083e5;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-left: 1.5rem /* 24px */;
+  padding-right: 1.5rem /* 24px */;
 }
 
 .button {
@@ -38,7 +51,18 @@
   border-radius: 8px;
 }
 
+.button-modal {
+  width: 90px;
+  height: 60px;
+}
+
 .button:hover {
   background: #fff9e3;
+  box-shadow: inset 0 0 0 2px #9083e5, -0px 0px 0 0 #9083e5;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  background: #cccccc;
   box-shadow: inset 0 0 0 2px #9083e5, -0px 0px 0 0 #9083e5;
 }

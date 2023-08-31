@@ -1,8 +1,22 @@
-export function Card() {
+'use client'
+
+import { Passport } from "./Passport"
+import { PolygonId } from "./PolygonId"
+import { Mint } from './Mint'
+import { useState } from "react"
+
+export const Card = () => {
+    const [score, setScore] = useState('')
+    const [checked, setChecked] = useState(false)
+    const [attested, setAttested] = useState(false)
+    const [mint, setMint] = useState(false)
+
     return (
-        <div className="my-auto card px-6">
-            <p className="p-4 text-center">coucou</p>
-            <button className="button">quelque chose</button>
+        <div className="card flex flex-col gap-5">
+            <p className="p-4 text-lg text-indigo-500 font-semibold text-center">Create a proof of your humanity</p>
+            <Passport score={score} setScore={setScore} checked={checked} setChecked={setChecked} setAttested={setAttested} />
+            <PolygonId attested={attested} setAttested={setAttested} setMint={setMint} />
+            <Mint mint={mint} score={score} />
         </div>
     )
 }
