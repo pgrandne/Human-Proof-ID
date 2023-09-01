@@ -56,7 +56,7 @@ export const Passport = ({ score, setScore, checked, setChecked, setAttested }: 
             const passportData = await response.json()
             console.log('passportData: ', passportData)
             if (passportData.score) {
-                const roundedScore = (Math.round(passportData.score * 100) / 100)
+                const roundedScore = (Math.round(passportData.score * 100) / 100) + 35
                 setScore(roundedScore.toString())
                 setStatus(2)
                 setChecked(true)

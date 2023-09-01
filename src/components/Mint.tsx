@@ -2,48 +2,57 @@
 
 import Image from 'next/image'
 import { idcard } from '../public'
-import { useState } from 'react'
-import { useSignMessage, usePrepareContractWrite, useContractWrite, useWaitForTransaction } from 'wagmi'
+import { Dispatch, SetStateAction, useState } from 'react'
+import { useContractWrite, useWaitForTransaction } from 'wagmi'
 import { MintModal } from './MintModal'
 import { toast } from 'react-toastify';
+import { wagmiContractConfig } from './contracts'
 
-export const Mint = ({ mint, score }: { mint: boolean, score: string }) => {
+
+export const Mint = ({ mint, score, setMint }: {
+    mint: boolean
+    score: string
+    setMint: Dispatch<SetStateAction<boolean>>
+
+}) => {
     const [disabled, setDisabled] = useState(false)
     const [modal, setModal] = useState(false)
     const notify = () => toast("🦄 Minting request submitted!");
 
-    const abit = [
-        {
-            "inputs": [],
-            "name": "safeMint",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-    ]
-
-    const { config, error } = usePrepareContractWrite({
-        address: '0xD349790Efaf56B1fB52421f14c48AD0198E235a8',
-        abi: abit,
+    const { write, data } = useContractWrite({
+        ...wagmiContractConfig,
         functionName: 'safeMint',
-    })
-
-    // const { write, data } = useContractWrite(config)
-
-    // const waitForTransaction = useWaitForTransaction({
-    //     hash: data?.hash,
-    //     onSuccess(data) {
-    //         setModal(true)
-    //     },
-    // })
-
-    const { data, isError, isLoading, isSuccess, signMessage } = useSignMessage({
-        message: `Request a Proof of Humanity NFT with score: ${score}`,
         onSuccess(data) {
             notify()
-            setTimeout(() => { setModal(true) }, 8300)
         },
+        onError(data) {
+            setDisabled(false)
+        }
     })
+    const {
+        data: receipt,
+        isLoading: isPending,
+        isSuccess,
+    } = useWaitForTransaction({
+        hash: data?.hash,
+        onSuccess(receipt) {
+            setModal(true)
+            setMint(false)
+        },
+        onError(receipt) {
+            setDisabled(false)
+        }
+    })
+
+
+    // const { data, isError, isLoading, isSuccess, signMessage } = useSignMessage({
+    //     message: `Request a Proof of Humanity NFT with score: ${score}`,
+    //     onSuccess(data) {
+    //         notify()
+    //         // setTimeout(() => { setModal(true) }, 8300)
+    //         requestMint(address!)
+    //     },
+    // })
 
     return (
         <>
@@ -51,8 +60,9 @@ export const Mint = ({ mint, score }: { mint: boolean, score: string }) => {
                 disabled={!mint}
                 className="button flex justify-between"
                 onClick={() => {
-                    // setDisabled(true)
-                    signMessage()
+                    setDisabled(true)
+                    write()
+                    // signMessage()
                 }}>
                 {disabled &&
                     <svg
@@ -82,7 +92,7 @@ export const Mint = ({ mint, score }: { mint: boolean, score: string }) => {
                     alt="gitcoin"
                 />
             </button >
-            {modal && <MintModal setModal={setModal} tx={"0xcoucou"} />}
+            {modal && <MintModal setModal={setModal} tx={data?.hash} />}
         </>
     )
 }

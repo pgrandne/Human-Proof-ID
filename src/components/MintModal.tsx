@@ -26,7 +26,7 @@ export const MintModal = ({
                     </div>
                     <p className="text-center">Congratulations, you are a human!</p>
                     <p className="text-center">Check your transaction on {' '}
-                        <a href={`https://mumbai.polygonscan.com/tx/${tx}`} className="underline">polygonscan</a>
+                        <a href={`https://mumbai.polygonscan.com/tx/${tx}`} target="_blank" rel="noreferrer" className="underline">polygonscan</a>
                     </p>
 
                     <div className="p-3 mt-2 text-center flex justify-center">

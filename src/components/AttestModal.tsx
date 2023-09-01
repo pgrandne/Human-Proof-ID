@@ -7,7 +7,7 @@ export const AttestModal = ({ setModal, setDisabled, setAttested, setMint }: {
     setAttested: Dispatch<SetStateAction<boolean>>
     setMint: Dispatch<SetStateAction<boolean>>
 }) => {
-    const notify = () => toast("🦄 Attestation claimed!", { autoClose: 10000, });
+    const notify = () => toast("🦄 Attestation claimed!");
 
     return (
         <div
